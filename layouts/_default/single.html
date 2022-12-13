@@ -59,6 +59,9 @@
             {{ .Content | safeHTML }}
         </div>
     </div>
+
+    {{ partial "comments.html" . }}
+
 </div>
 
 {{ end }}
