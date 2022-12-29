@@ -12,7 +12,10 @@
     </script>
     {{ end }}
     <!-- RSS - https://digitaldrummerj.me/hugo-create-rss-feed/ -->
-    <link rel="alternate" type="application/rss+xml" href="{{.Site.BaseURL }}/rss.xml" title="{{ .Site.Title }}">
+    <!-- https://gohugo.io/templates/rss/#reference-your-rss-feed-in-head   -->
+    {{ range .AlternativeOutputFormats -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
     <!-- Enable Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
